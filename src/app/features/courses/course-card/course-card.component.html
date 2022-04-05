@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-6 p-3 border border-end-0">
+            <ng-content select="[title]"></ng-content>
+            <ng-content select="[description]"></ng-content>
+        </div>
+        <div class="col-3 p-3 border border-start-0">
+            <ng-content select="[authors]"></ng-content>
+            <ng-content select="[duration]"></ng-content>
+            <ng-content select="[creationDate]"></ng-content>
+          <div class="row mt-4">
+              <div class="col text-center">
+                <ng-content></ng-content>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>

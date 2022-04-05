@@ -1,0 +1,8 @@
+<app-header-content>
+    <div class="col-10">
+        <span id="userName">{{name$ | async}}</span>
+    </div>
+    <div class="col-2">
+        <app-button (click)="logOut()" [buttonText]="buttonText.logout"></app-button>
+    </div>
+</app-header-content>

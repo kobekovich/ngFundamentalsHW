@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div mat-dialog-actions>
+                <button mat-button mat-dialog-close><i class="bi bi-x-square-fill"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<h1 mat-dialog-title>This is title</h1>
+<div mat-dialog-content>This is message</div>
+<div mat-dialog-actions>
+    <app-button mat-button mat-dialog-close [buttonText]="buttonText.ok"></app-button>
+    <app-button mat-button mat-dialog-close [buttonText]="buttonText.cancel"></app-button>
+</div>

@@ -1,0 +1,8 @@
+<app-course-card>
+    <app-button (click)="goBack()" [buttonText]="buttonText.goBack"></app-button>
+    <h4 title class="mb-3">{{showCourseList?.title}}</h4>
+    <p description>{{showCourseList?.description}}</p>
+    <p authors><b>Authors: </b><span class="authors">{{showCourseList?.authors | stringJoiner: '; '}}</span></p>
+    <p duration><b>Duration: </b><span class="duration">{{showCourseList?.duration | duration}}</span></p>
+    <p creationDate><b>Created: </b><span class="created">{{showCourseList?.creationDate}}</span></p>
+</app-course-card>

@@ -1,0 +1,10 @@
+<app-course-card *ngFor="let l of courses$ | async">
+    <app-button (click)="onShow(l)" [buttonText]="buttonText.showCourse"></app-button>
+    <button (click)="editCourse(l)" class="btn btn-outline-secondary m-3"><i class="bi bi-pencil-fill"></i></button>
+    <button (click)="deleteCourse(l)" class="btn btn-outline-secondary"><i class="bi bi-trash-fill"></i></button>
+    <h4 title class="mb-3">{{l.title}}</h4>
+    <p description>{{l.description}}</p>
+    <p authors><b>Authors: </b><span class="authors">{{l.authors | stringJoiner: '; '}}</span></p>
+    <p duration><b>Duration: </b><span class="duration">{{l.duration | duration}}</span></p>
+    <p creationDate><b>Created: </b><span class="created">{{l.creationDate}}</span></p>
+</app-course-card>

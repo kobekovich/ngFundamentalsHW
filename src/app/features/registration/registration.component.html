@@ -1,0 +1,58 @@
+<div class="d-flex align-items-center">
+    <div class="container">
+        <h2 class="text-center mt-5">Registration</h2>
+        <form [formGroup]="registrationForm" #regForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="form-floating mb-3">
+                        <input [class.is-invalid]="userName?.invalid && (regForm.submitted || userName?.touched)"
+                        type="text" formControlName="name" class="form-control" id="nameInput" name="name" placeholder="Name">
+                        <label for="nameInput">Name</label>
+                        <div *ngIf="userName?.invalid && (regForm.submitted || userName?.touched)" class="text-danger">
+                            <div *ngIf="userName?.errors?.required">Username is required.</div>
+                            <div *ngIf="userName?.errors?.minlength">Username must be at least 6 characters.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="form-floating mb-3">
+                        <input [class.is-invalid]="email?.invalid && (regForm.submitted || email?.touched)"
+                        type="email" formControlName="email" class="form-control" id="emailInput" name="email" placeholder="Email">
+                        <label for="emailInput">Email</label>
+                        <div *ngIf="email?.invalid && (regForm.submitted || email?.touched)" class="text-danger">
+                            <div *ngIf="email?.errors?.required">Email is required.</div>
+                            <div *ngIf="email?.errors?.forbiddenName && !email?.errors?.required">Email form is incorrect.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <div class="input-group">
+                        <div class="form-floating flex-grow-1">
+                            <input [class.is-invalid]="password?.invalid && (regForm.submitted || password?.touched)"
+                            type="password" formControlName="password" class="form-control" id="passwordInput" name="password" placeholder="Password">
+                            <label for="passwordInput">Password</label>
+                        </div>
+                        <span appTogglePassword class="input-group-text"><i class="fs-3 bi bi-eye-fill"></i></span>
+                    </div>
+                    <div *ngIf="password?.invalid && (regForm.submitted || password?.touched)" class="text-danger">
+                        <div *ngIf="password?.errors?.required">Password is required.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="col-8 text-center">
+                    <button type="submit" class="btn btn-outline-secondary">Registration</button>
+                </div>
+            </div>
+            <p class="text-center mt-3 fs-4" id="regMessage"></p>
+            <p class="text-center mt-3">If you've got an account, press</p>
+            <p class="text-center">
+                <a href="#" class="link-secondary text-center">Login</a>
+            </p>
+        </form>
+    </div>    
+</div>

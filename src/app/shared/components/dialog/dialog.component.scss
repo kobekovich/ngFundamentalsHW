@@ -1,0 +1,14 @@
+.mat-dialog-actions:first-child {
+    float: right;
+}
+
+.mat-dialog-actions:last-child {
+
+    app-button:first-child {
+        margin-right: 20px;
+    }
+}
+
+.mat-dialog-content {
+    margin-bottom: 20px;
+}

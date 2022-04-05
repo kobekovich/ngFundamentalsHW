@@ -1,0 +1,67 @@
+<div class="container border border-1 border-dark mt-3">
+    <form [formGroup]="courseForm" #crsForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row align-items-end p-3">
+            <div class="col-9">
+                <label for="titleInput" class="fw-bold">Title</label>
+                <input [class.is-invalid]="courseTitle?.invalid && (crsForm.submitted || courseTitle?.touched)"
+                type="text" formControlName="title" class="form-control" id="titleInput">
+                <div *ngIf="courseTitle?.invalid && (crsForm.submitted || courseTitle?.touched)" class="text-danger">
+                    <div *ngIf="courseTitle?.errors?.required">Title is required.</div>
+                </div>
+            </div>
+            <div class="col-3 text-center">
+                <button type="submit" class="btn btn-outline-secondary">Create course</button>
+            </div>
+        </div>
+        <div class="row p-3">
+            <div class="col">
+                <label for="descriptionInput" class="fw-bold">Description</label>
+                <textarea [class.is-invalid]="courseDescription?.invalid && (crsForm.submitted || courseDescription?.touched)"
+                type="text" formControlName="description" class="form-control" id="descriptionInput"></textarea>
+                <div *ngIf="courseDescription?.invalid && (crsForm.submitted || courseDescription?.touched)" class="text-danger">
+                    <div *ngIf="courseDescription?.errors?.required">Description is required.</div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top border-1 border-dark p-3">        
+            <div class="col">
+                <div formGroupName="authors">
+                    <h4 class="text-center">Add authors</h4>
+                    <label for="authorInput" class="fw-bold">Author name</label>
+                    <input [class.is-invalid]="crsAuthor?.invalid && crsAuthor?.touched && crsAuthor?.value"
+                    type="text" formControlName="authorName" class="form-control" id="authorInput">
+                    <div *ngIf="crsAuthor?.invalid && crsAuthor?.touched && crsAuthor?.value" class="text-danger">
+                        <div *ngIf="crsAuthor?.errors?.forbiddenAuthor">
+                            Author name contains latin letters and numbers only
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center p-3">
+                    <button (click)="createAuthor()" type="button" class="btn btn-outline-secondary">Create author</button>
+                </div>
+                <h4 class="text-center">Duration</h4>
+                <label for="durationInput" class="fw-bold">Duration</label>
+                <input [class.is-invalid]="duration?.invalid && (crsForm.submitted || duration?.touched)"
+                type="text" formControlName="duration" class="form-control" id="durationInput"> 
+                <div *ngIf="duration?.invalid && (crsForm.submitted || duration?.touched)" class="text-danger">
+                    <div *ngIf="duration?.errors?.required">Duration is required.</div>
+                    <div *ngIf="duration?.errors?.min || duration?.errors?.pattern">Use positive numbers only.</div>
+                </div> 
+                <div class="pt-3">
+                    <p>Duration: <span *ngIf="duration?.valid">{{duration?.value | duration}}</span></p>
+                </div>
+            </div>
+            <div class="col border-start border-1 border-dark text-center">
+                <h4>Authors list</h4>
+                <div class="row p-3" *ngFor="let i of authorsArray">
+                    <div class="col">{{i.name}}</div>
+                    <div class="col">
+                        <div class="text-center">
+                            <button type="button" (click)="deleteAuthor(i.id)" class="btn btn-outline-secondary">Delete author</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

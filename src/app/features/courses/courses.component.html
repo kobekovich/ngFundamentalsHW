@@ -1,0 +1,12 @@
+<app-info *ngIf="cc" [displayInfoTitle]="addCourseInfo.title" [displayInfoText]="addCourseInfo.text"></app-info>
+<div class="text-center mt-3">
+    <app-button (click)="goAdd()" [buttonText]="buttonText.addCourse"></app-button>
+</div>
+<app-course-list></app-course-list>
+<div class="container m-5">
+    <div class="row">
+        <div class="col text-center">
+            <app-button [buttonText]="buttonText.openModal" (click)="openDialog()"></app-button>
+        </div>
+    </div>
+</div>
